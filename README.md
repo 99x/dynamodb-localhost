@@ -27,17 +27,17 @@ Usage example
 
 ```
 var dynamodbLocal = require("dynamodb-localhost");
-dynamodbLocal.install(); /* All the other methods depends on this */
+dynamodbLocal.install(); /* This is one time operation. Safe to execute multiple times which installs DynamoDB once. All the other methods depends on this. */
 dynamodbLocal.start({port: 8000});
 ```
 
 Supported methods
 
 ```
-install()                           To install DynamoDB Local for usage (This is one time operation unless execute remove)
+install(callback)                           To install DynamoDB Local for usage (This is one time operation unless execute remove)
 start(options)                      To start an instance of DynamoDB Local. More information about options shown in the coming section
 stop(port)                          To stop particular instance of DynamoDb Local running on an specified port
-remove()                            To remove DynamoDB Local instance
+remove(callback)                            To remove DynamoDB Local instance
 ```
 
 NOTE: After executing start(options), DynamoDB will process incoming requests until you stop it. To stop DynamoDB, type Ctrl+C in the command prompt window. To view dynamodb interactive web shell, go to DynamoDB Local [shell](http://localhost:8000/shell) in your browser.

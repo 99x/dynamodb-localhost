@@ -7,9 +7,10 @@ var installer = require('./dynamodb/installer'),
     dbInstances = {};
 
 var dynamodb = {
-    install: function () {
+    install: function (callback) {
         installer.install(config, function (msg) {
             console.log(msg);
+            callback();
         });
     },
     start: function (options) {
@@ -37,9 +38,10 @@ var dynamodb = {
         this.start(options);
         console.log("Successfully restarted dynamodb local on port: " + port);
     },
-    remove: function () {
+    remove: function (callback) {
         utils.removeDir(config.setup.install_path, function () {
             console.log("Successfully removed dynamodb local!");
+            callback();
         });
     }
 };

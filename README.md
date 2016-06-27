@@ -25,8 +25,10 @@ This library works as a wrapper for AWS DynamoDB Local, intended for use in devo
 
 Usage example
 
-'var dynamodbLocal = require("dynamodb-localhost")'
-'dynamodbLocal.start({port: 8000})'
+```
+var dynamodbLocal = require("dynamodb-localhost");
+dynamodbLocal.start({port: 8000});
+```
 
 Provided methods
 
@@ -55,7 +57,7 @@ All options for DynamoDB start:
 
 * [Dynamodb local documentation](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.html)
 * [Contact Us](mailto:ashanf@99x.lk)
-* [NPM Registry](https://www.npmjs.com/package/dynamodb-localhost
+* [NPM Registry](https://www.npmjs.com/package/dynamodb-localhost)
 
 ## Contributing
 

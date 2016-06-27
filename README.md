@@ -27,10 +27,11 @@ Usage example
 
 ```
 var dynamodbLocal = require("dynamodb-localhost");
+dynamodbLocal.install(); /* All the other methods depends on this */
 dynamodbLocal.start({port: 8000});
 ```
 
-Provided methods
+Supported methods
 
 ```
 install()                           To install DynamoDB Local for usage (This is one time operation unless execute remove)

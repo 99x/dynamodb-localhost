@@ -4,7 +4,7 @@
     "engines": {
         "node": ">=4.0"
     },
-    "description": "Dynamodb local plugin for development and testing",
+    "description": "Dynamodb local plugin for devops",
     "author": "99xtechnology.com",
     "license": "MIT",
     "repository": {

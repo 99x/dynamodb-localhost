@@ -9,6 +9,7 @@ var tar = require('tar'),
     utils = require('./utils');
 
 var download = function (downloadUrl, installPath, callback) {
+    console
     http.get(downloadUrl, function (response) {
             if (302 != response.statusCode) {
                 callback(new Error('Error getting DynamoDb local latest tar.gz location: ' + response.statusCode));

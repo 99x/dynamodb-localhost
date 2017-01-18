@@ -1,6 +1,6 @@
 {
     "setup": {
-        "download_url": "http://dynamodb-local.s3-website-us-west-2.amazonaws.com/dynamodb_local_latest.tar.gz",
+        "download_url": "http://s3-us-west-2.amazonaws.com/dynamodb-local/dynamodb_local_latest.tar.gz",
         "install_path": "/bin",
         "jar": "DynamoDBLocal.jar"
     },

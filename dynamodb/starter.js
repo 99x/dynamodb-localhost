@@ -8,7 +8,7 @@ var starter = {
         /* Dynamodb local documentation http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.html */
         var additionalArgs = [],
             port = options.port || config.start.port,
-            db_dir = utils.absPath(config.setup.install_path),
+            db_dir = options.install_path || utils.absPath(config.setup.install_path),
             jar = config.setup.jar;
 
         if (options.dbPath) {

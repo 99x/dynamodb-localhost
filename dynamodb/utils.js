@@ -4,8 +4,12 @@ var path = require('path'),
     rmdir = require('rmdir'),
     fs = require('fs');
 
-var absPath = function (relPath) {
-    return path.dirname(__filename) + '/' + relPath;
+var absPath = function (p) {
+  if (path.isAbsolute(p)) {
+    return p;
+  } else {
+    return path.join(path.dirname(__filename), p);
+  }
 };
 
 var removeDir = function (relPath, callback) {

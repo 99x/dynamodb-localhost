@@ -1,15 +1,15 @@
 {
-    "name": "dynamodb-localhost",
+    "name": "dynamodb-localhost-souqalmal",
     "version": "0.0.6",
     "engines": {
         "node": ">=4.0"
     },
     "description": "Dynamodb local plugin for devops",
-    "author": "99xtechnology.com",
+    "author": "souqalmal.com",
     "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "https://github.com/99xt/dynamodb-localhost"
+        "url": "https://github.com/Souqalmal/dynamodb-localhost"
     },
     "keywords": [
     "aws",

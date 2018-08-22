@@ -55,6 +55,8 @@ var install = function (config, callback) {
             utils.createDir(config.setup.install_path);
             download(download_url, install_path, callback);
         }
-    } catch (e) {}
+    } catch (err) {
+        throw new Error("Error configuring or installing Dynamodb local " + err);
+    }
 };
 module.exports.install = install;

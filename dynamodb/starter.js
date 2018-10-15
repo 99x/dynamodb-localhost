@@ -6,11 +6,18 @@ var spawn = require('child_process').spawn,
 var starter = {
     start: function (options, config) {
         /* Dynamodb local documentation http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.html */
-        var additionalArgs = [],
+        var preArgs = [],
+            additionalArgs = [],
             port = options.port || config.start.port,
             db_dir = options.install_path || utils.absPath(config.setup.install_path),
             jar = config.setup.jar;
 
+        if (options.heapInitial) {
+            preArgs.push(`-Xms${options.heapInitial}`);
+        }
+        if (options.heapMax) {
+            preArgs.push(`-Xmx${options.heapMax}`)
+        }
         if (options.dbPath) {
             additionalArgs.push('-dbPath', options.dbPath);
         } else {
@@ -33,7 +40,7 @@ var starter = {
         }
 
         var args = ['-Djava.library.path=' + db_dir + '/DynamoDBLocal_lib', '-jar', jar, '-port', port];
-        args = args.concat(additionalArgs);
+        args = preArgs.concat(args.concat(additionalArgs));
 
         var child = spawn('java', args, {
             cwd: db_dir,

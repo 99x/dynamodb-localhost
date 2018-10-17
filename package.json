@@ -1,6 +1,6 @@
 {
-    "name": "dynamodb-localhost",
-    "version": "0.0.5",
+    "name": "npm-dynamodb-localhost",
+    "version": "1.0.0",
     "engines": {
         "node": ">=4.0"
     },
@@ -9,21 +9,21 @@
     "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "https://github.com/99xt/dynamodb-localhost"
+        "url": "https://github.com/Vin65/dynamodb-localhost"
     },
     "keywords": [
-    "aws",
-    "dynamodb",
-    "dynamo",
-    "testing",
-    "development",
-    "tool",
-    "local",
-    "localhost",
-    "local-dynamodb",
-    "dynamodb-local",
-    "dynamodb-localhost"
-  ],
+        "aws",
+        "dynamodb",
+        "dynamo",
+        "testing",
+        "development",
+        "tool",
+        "local",
+        "localhost",
+        "local-dynamodb",
+        "dynamodb-local",
+        "dynamodb-localhost"
+    ],
     "main": "index.js",
     "bin": {},
     "dependencies": {

@@ -1,6 +1,6 @@
 {
-    "name": "dynamodb-localhost",
-    "version": "0.0.5",
+    "name": "npm-dynamodb-localhost",
+    "version": "1.0.0",
     "engines": {
         "node": ">=4.0"
     },
@@ -9,7 +9,7 @@
     "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "https://github.com/Vin65/dynamodb-localhost"
+        "url": "https://github.com/Vin65/npm-dynamodb-localhost"
     },
     "keywords": [
         "aws",

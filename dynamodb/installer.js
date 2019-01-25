@@ -3,16 +3,19 @@
 var tar = require('tar'),
     zlib = require('zlib'),
     path = require('path'),
-    http = require('http'),
+    request = require('request'),
     fs = require('fs'),
     ProgressBar = require('progress'),
     utils = require('./utils');
 
 var download = function (downloadUrl, installPath, callback) {
     console.log("Started downloading Dynamodb-local. Process may take few minutes.");
-    http.get(downloadUrl, function (response) {
-            var len = parseInt(response.headers['content-length'], 10),
-            bar = new ProgressBar('Downloading dynamodb-local [:bar] :percent :etas', {
+    request.get(downloadUrl)
+        .on('response', (response) => {
+
+            const len = parseInt(response.headers['content-length'], 10);
+
+            const bar = new ProgressBar('Downloading dynamodb-local [:bar] :percent :etas', {
                 complete: '=',
                 incomplete: ' ',
                 width: 40,
@@ -37,7 +40,7 @@ var download = function (downloadUrl, installPath, callback) {
                 .on('error', function (err) {
                     throw new Error("Error in downloading Dynamodb local " + err);
                 });
-            })
+        })
         .on('error', function (err) {
             throw new Error("Error in downloading Dynamodb local " + err);
         });

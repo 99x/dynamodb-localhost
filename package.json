@@ -12,24 +12,23 @@
         "url": "https://github.com/99xt/dynamodb-localhost"
     },
     "keywords": [
-    "aws",
-    "dynamodb",
-    "dynamo",
-    "testing",
-    "development",
-    "tool",
-    "local",
-    "localhost",
-    "local-dynamodb",
-    "dynamodb-local",
-    "dynamodb-localhost"
-  ],
+        "aws",
+        "dynamodb",
+        "dynamo",
+        "testing",
+        "development",
+        "tool",
+        "local",
+        "localhost",
+        "local-dynamodb",
+        "dynamodb-local",
+        "dynamodb-localhost"
+    ],
     "main": "index.js",
     "bin": {},
     "dependencies": {
         "mkdirp": "^0.5.0",
         "progress": "^1.1.8",
-        "rmdir": "^1.2.0",
         "tar": "^2.0.0"
     }
 }

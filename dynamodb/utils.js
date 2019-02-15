@@ -1,8 +1,8 @@
 'use strict';
 
 var path = require('path'),
-    rmdir = require('rmdir'),
-    fs = require('fs');
+    fs = require('fs'),
+    exec = require('child_process').exec;
 
 var absPath = function (p) {
   if (path.isAbsolute(p)) {
@@ -14,7 +14,7 @@ var absPath = function (p) {
 
 var removeDir = function (relPath, callback) {
     var path = absPath(relPath);
-    rmdir(path, callback);
+    exec('rm -r ' + path, callback);
 };
 
 var createDir = function (relPath) {

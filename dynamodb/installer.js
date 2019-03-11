@@ -3,14 +3,14 @@
 var tar = require('tar'),
     zlib = require('zlib'),
     path = require('path'),
-    http = require('http'),
+    https = require('https'),
     fs = require('fs'),
     ProgressBar = require('progress'),
     utils = require('./utils');
 
 var download = function (downloadUrl, installPath, callback) {
     console.log("Started downloading Dynamodb-local. Process may take few minutes.");
-    http.get(downloadUrl, function (response) {
+    https.get(downloadUrl, function (response) {
             var len = parseInt(response.headers['content-length'], 10),
             bar = new ProgressBar('Downloading dynamodb-local [:bar] :percent :etas', {
                 complete: '=',

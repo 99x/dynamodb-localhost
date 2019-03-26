@@ -1,7 +1,8 @@
 'use strict';
 
 var spawn = require('child_process').spawn,
-    utils = require('./utils');
+    utils = require('./utils'),
+    os = require('os');
 
 var starter = {
     start: function (options, config) {
@@ -42,11 +43,16 @@ var starter = {
         var args = ['-Djava.library.path=' + db_dir + '/DynamoDBLocal_lib', '-jar', jar, '-port', port];
         args = preArgs.concat(args.concat(additionalArgs));
 
-        var child = spawn('java', args, {
+        const spawnOptions = {
             cwd: db_dir,
             env: process.env,
             stdio: ['pipe', 'pipe', process.stderr]
-        });
+        }
+
+        if(os.platform() === "win32")
+            spawnOptions.shell = true
+
+        var child = spawn('java', args, spawnOptions);
 
         if (!child.pid) {
             throw new Error('Unable to start DynamoDB Local process!');

@@ -25,7 +25,7 @@ var download = function (downloadUrl, installPath, callback) {
 
             response
                 .pipe(zlib.Unzip())
-                .pipe(tar.Extract({
+                .pipe(new tar.Unpack({
                     path: installPath
                 }))
                 .on('data', function (chunk) {

@@ -38,7 +38,7 @@ var download = function(downloadUrl, installPath, callback) {
         .pipe(zlib.Unzip())
         .pipe(
           tar.x({
-            path: installPath
+            C: installPath
           })
         )
         .on("data", function(chunk) {

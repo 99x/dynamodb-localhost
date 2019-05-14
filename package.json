@@ -25,9 +25,13 @@
     "dynamodb-localhost"
   ],
   "main": "index.js",
-  "bin": {},
+  "scripts": {
+    "test": "mocha test/*.test.js --reporter spec"
+  },
   "dependencies": {
+    "chai": "^4.2.0",
     "mkdirp": "^0.5.0",
+    "mocha": "^6.1.4",
     "progress": "^1.1.8",
     "rimraf": "^2.6.3",
     "tar": "^4.4.8"

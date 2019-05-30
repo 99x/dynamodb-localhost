@@ -1,16 +1,20 @@
 'use strict';
 
 var path = require('path'),
-    rmdir = require('rmdir'),
+    rimraf = require("rimraf"),
     fs = require('fs');
 
-var absPath = function (relPath) {
-    return path.dirname(__filename) + '/' + relPath;
+var absPath = function (p) {
+  if (path.isAbsolute(p)) {
+    return p;
+  } else {
+    return path.join(path.dirname(__filename), p);
+  }
 };
 
 var removeDir = function (relPath, callback) {
     var path = absPath(relPath);
-    rmdir(path, callback);
+    rimraf(path, callback);
 };
 
 var createDir = function (relPath) {

@@ -16,7 +16,7 @@ var starter = {
             preArgs.push(`-Xms${options.heapInitial}`);
         }
         if (options.heapMax) {
-            preArgs.push(`-Xmx${options.heapMax}`)
+            preArgs.push(`-Xmx${options.heapMax}`);
         }
         if (options.dbPath) {
             additionalArgs.push('-dbPath', options.dbPath);

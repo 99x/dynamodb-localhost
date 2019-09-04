@@ -49,7 +49,7 @@ var starter = {
         });
 
         if (!child.pid) {
-            throw new Error('Unable to start DynamoDB Local process!');
+            throw new Error('Unable to start DynamoDB Local process! Make sure you have java executable in your path.');
         }
 
         child.on('error', function (code) {

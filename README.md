@@ -45,7 +45,8 @@ NOTE: After executing start(options), DynamoDB will process incoming requests un
 All options for DynamoDB start:
 
 ```js
-{ port : 8000, /* Port to listen on. Default: 8000 */
+{
+  port : 8000, /* Port to listen on. Default: 8000 */
   cors : '*', /* Enable CORS support (cross-origin resource sharing) for JavaScript. You must provide a comma-separated "allow" list of specific domains. The default setting for cors is an asterisk (*), which allows public access. */
   inMemory : true, /* DynamoDB; will run in memory, instead of using a database file. When you stop DynamoDB;, none of the data will be saved. Note that you cannot specify both dbPath and inMemory at once. */
   dbPath : '<mypath>/', /* The directory where DynamoDB will write its database file. If you do not specify this option, the file will be written to the current directory. Note that you cannot specify both dbPath and inMemory at once. For the path, current working directory is <projectroot>/node_modules/dynamodb-localhost/dynamob. For example to create <projectroot>/node_modules/dynamodb-localhost/dynamob/<mypath> you should specify '<mypath>/' with a forwardslash at the end. */
@@ -54,6 +55,8 @@ All options for DynamoDB start:
   optimizeDbBeforeStartup : true,  /* Optimizes the underlying database tables before starting up DynamoDB on your computer. You must also specify -dbPath when you use this parameter. */
   heapInitial: undefined, /* A string which sets the initial heap size e.g., heapInitial: '2048m'. This is input to the java -Xms argument */
   heapMax: undefined, /* A string which sets the maximum heap size e.g., heapMax: '1g'. This is input to the java -Xmx argument */
+  docker: false, /* If true, starts DynamoDB using docker. The docker executable may be customized using process.env.DOCKER_PATH, and the docker image through process.env.DOCKER_IMAGE. */
+}
 ```
 
 ## Links

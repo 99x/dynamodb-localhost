@@ -9,7 +9,7 @@ describe("install", function() {
   const jarPath = `${installPath}/${config.setup.jar}`;
 
   it("downloads the jar successfully", function(done) {
-    this.timeout(10000); // 10 second timeout
+    this.timeout(30000); // 30 second timeout
 
     install(function() {
       if (fs.existsSync(jarPath)) {

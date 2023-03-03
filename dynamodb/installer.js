@@ -1,29 +1,23 @@
 "use strict";
 
-var tar = require("tar"),
-  zlib = require("zlib"),
-  path = require("path"),
-  http = require("http"),
-  fs = require("fs"),
-  ProgressBar = require("progress"),
-  utils = require("./utils");
+var tar = require('tar'),
+    zlib = require('zlib'),
+    path = require('path'),
+    https = require('https'),
+    fs = require('fs'),
+    ProgressBar = require('progress'),
+    utils = require('./utils');
 
-var download = function(downloadUrl, installPath, callback) {
-  console.log(
-    `Started downloading dynamodb-local from ${downloadUrl} into ${installPath}. Process may take few minutes.`
-  );
-  http
-    .get(downloadUrl, function(response) {
-      var len = parseInt(response.headers["content-length"], 10),
-        bar = new ProgressBar(
-          "Downloading dynamodb-local [:bar] :percent :etas",
-          {
-            complete: "=",
-            incomplete: " ",
-            width: 40,
-            total: len
-          }
-        );
+var download = function (downloadUrl, installPath, callback) {
+    console.log("Started downloading Dynamodb-local. Process may take few minutes.");
+    https.get(downloadUrl, function (response) {
+            var len = parseInt(response.headers['content-length'], 10),
+            bar = new ProgressBar('Downloading dynamodb-local [:bar] :percent :etas', {
+                complete: '=',
+                incomplete: ' ',
+                width: 40,
+                total: len
+            });
 
       if (200 != response.statusCode) {
         throw new Error(

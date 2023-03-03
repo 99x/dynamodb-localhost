@@ -16,7 +16,7 @@ var starter = {
             preArgs.push(`-Xms${options.heapInitial}`);
         }
         if (options.heapMax) {
-            preArgs.push(`-Xmx${options.heapMax}`)
+            preArgs.push(`-Xmx${options.heapMax}`);
         }
         if (options.dbPath) {
             additionalArgs.push('-dbPath', options.dbPath);
@@ -39,17 +39,28 @@ var starter = {
             additionalArgs.push('-help');
         }
 
-        var args = ['-Djava.library.path=' + db_dir + '/DynamoDBLocal_lib', '-jar', jar, '-port', port];
-        args = preArgs.concat(args.concat(additionalArgs));
+        var args = ['-jar', jar, '-port', port];
+        var executable;
+        var cwd;
 
-        var child = spawn('java', args, {
-            cwd: db_dir,
+        if (options.docker) {
+            executable = process.env.DOCKER_PATH || 'docker';
+            preArgs = ['run', '-d', '-p', port + ':' + port, process.env.DOCKER_IMAGE || 'amazon/dynamodb-local'];
+        } else {
+            executable = 'java';
+            preArgs.push('-Djava.library.path=' + db_dir + '/DynamoDBLocal_lib');
+            cwd = db_dir;
+        }
+
+        args = preArgs.concat(args.concat(additionalArgs));
+        var child = spawn(executable, args, {
+            cwd: cwd,
             env: process.env,
             stdio: ['pipe', 'pipe', process.stderr]
         });
 
         if (!child.pid) {
-            throw new Error('Unable to start DynamoDB Local process!');
+            throw new Error('Unable to start DynamoDB Local process! Make sure you have ' + executable + ' executable in your path.');
         }
 
         child.on('error', function (code) {

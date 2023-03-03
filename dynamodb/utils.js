@@ -1,7 +1,7 @@
 'use strict';
 
 var path = require('path'),
-    rmdir = require('rmdir'),
+    rimraf = require("rimraf"),
     fs = require('fs');
 
 var absPath = function (p) {
@@ -14,7 +14,7 @@ var absPath = function (p) {
 
 var removeDir = function (relPath, callback) {
     var path = absPath(relPath);
-    rmdir(path, callback);
+    rimraf(path, callback);
 };
 
 var createDir = function (relPath) {

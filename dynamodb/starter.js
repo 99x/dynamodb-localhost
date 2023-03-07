@@ -56,6 +56,7 @@ var starter = {
         var child = spawn(executable, args, {
             cwd: cwd,
             env: process.env,
+            detached: true,
             stdio: ['pipe', 'pipe', process.stderr]
         });
 

@@ -1,6 +1,7 @@
 'use strict';
 
 var spawn = require('child_process').spawn,
+    isMainThread = require('worker_threads').isMainThread,
     utils = require('./utils');
 
 var starter = {
@@ -56,7 +57,7 @@ var starter = {
         var child = spawn(executable, args, {
             cwd: cwd,
             env: process.env,
-            stdio: ['pipe', 'pipe', process.stderr]
+            stdio: isMainThread ? ['pipe', 'pipe', process.stderr] : 'inherit'
         });
 
         if (!child.pid) {

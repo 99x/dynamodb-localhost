@@ -1,5 +1,5 @@
 {
-  "name": "@khasty/dynamodb-localhost",
+  "name": "@khasty720/dynamodb-localhost",
   "version": "1.0.1-canary.1",
   "engines": {
     "node": ">=4.0"
@@ -9,7 +9,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/khasty720/dynamodb-localhost"
+    "url": "git+https://github.com/khasty720/dynamodb-localhost.git"
   },
   "keywords": [
     "aws",
@@ -37,5 +37,13 @@
     "progress": "^1.1.8",
     "rimraf": "^2.6.3",
     "tar": "^4.4.19"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/khasty720/dynamodb-localhost/issues"
+  },
+  "homepage": "https://github.com/khasty720/dynamodb-localhost#readme",
+  "directories": {
+    "test": "test"
+  },
+  "devDependencies": {}
 }

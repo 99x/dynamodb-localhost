@@ -1,5 +1,5 @@
 {
-  "name": "@khasty720/dynamodb-localhost",
+  "name": "@khasty/dynamodb-localhost",
   "version": "1.0.1-canary.2",
   "engines": {
     "node": ">=4.0"
@@ -28,7 +28,7 @@
   "scripts": {
     "test": "mocha test/*.test.js --reporter spec",
     "version:prerelease": "npm version prerelease --preid=canary",
-    "publish:prerelease": "npm login && npm publish --tag canary"
+    "publish:prerelease": "npm login && npm publish --access public --tag canary"
   },
   "dependencies": {
     "chai": "^4.2.0",

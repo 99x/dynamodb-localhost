@@ -1,6 +1,6 @@
 {
   "name": "@khasty/dynamodb-localhost",
-  "version": "1.0.1-canary.0",
+  "version": "1.0.1-canary.1",
   "engines": {
     "node": ">=4.0"
   },

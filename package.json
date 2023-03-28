@@ -1,15 +1,15 @@
 {
-  "name": "dynamodb-localhost",
+  "name": "@khasty/dynamodb-localhost",
   "version": "0.0.9",
   "engines": {
     "node": ">=4.0"
   },
   "description": "Dynamodb local plugin for devops",
-  "author": "99xtechnology.com",
+  "author": "Kyle Hasty",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/99xt/dynamodb-localhost"
+    "url": "https://github.com/khasty720/dynamodb-localhost"
   },
   "keywords": [
     "aws",

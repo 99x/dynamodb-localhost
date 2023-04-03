@@ -27,7 +27,7 @@ var dynamodb = {
                 console.log('DynamoDB Local failed to start with code', code);
             }
         });
-        console.log('Dynamodb Local Started, Visit: http://localhost:' + (options.port || config.start.port) + '/shell');
+        console.log('Dynamodb Local Started');
     },
     stop: function(port) {
         if (dbInstances[port]) {

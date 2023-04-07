@@ -25,7 +25,7 @@ This library works as a wrapper for AWS DynamoDB Local, intended for use in devo
 
 Usage example
 
-```
+```javascript
 var dynamodbLocal = require("dynamodb-localhost");
 dynamodbLocal.install(); /* This is one time operation. Safe to execute multiple times which installs DynamoDB once. All the other methods depends on this. */
 dynamodbLocal.start({port: 8000});

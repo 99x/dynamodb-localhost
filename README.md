@@ -27,14 +27,26 @@ Usage example
 
 ```
 var dynamodbLocal = require("dynamodb-localhost");
-dynamodbLocal.install(); /* This is one time operation. Safe to execute multiple times which installs DynamoDB once. All the other methods depends on this. */
-dynamodbLocal.start({port: 8000});
+/* Installation is one time operation. Safe to execute multiple times which installs DynamoDB once. All the other methods depends on this. */
+dynamodbLocal.install(function() {
+  dynamodbLocal.start({port: 8000});
+}); 
+```
+
+or
+
+```
+var dynamodbLocal = require("dynamodb-localhost");
+await dynamodbLocal.install();
+
+dynamodbLocal.start();
 ```
 
 Supported methods
 
 ```
-install(callback)   To install DynamoDB Local for usage (This is one time operation unless execute remove). 'callback' function is called after installation completes (or if already installed, immediately)
+install(callback)   To install DynamoDB Local for usage (This is one time operation unless remove is executed). 'callback' function is called after installation completes (or if already installed, immediately)
+installAsync()      To install DynamoDB Local asynchronously. Otherwise identical to install.
 start(options)      To start an instance of DynamoDB Local. More information about options shown in the coming section
 stop(port)          To stop particular instance of DynamoDb Local running on an specified port
 remove(callback)    To remove DynamoDB Local instance. 'callback' function is called after removal complete.

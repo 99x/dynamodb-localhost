@@ -16,6 +16,11 @@ var dynamodb = {
             callback();
         });
     },
+    installAsync: async function(path) {
+        return new Promise((resolve) => {
+            dynamodb.install(resolve, path);
+        });
+    },
     start: function(options) {
         var instance = starter.start(options, config);
         dbInstances[instance.port] = {

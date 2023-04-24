@@ -19,7 +19,7 @@ var starter = {
             preArgs.push(`-Xmx${options.heapMax}`);
         }
         if (options.dbPath) {
-            additionalArgs.push('-dbPath', options.dbPath);
+            additionalArgs.push('-dbPath', options.docker ? 'dbpath' : options.dbPath);
         } else {
             additionalArgs.push('-inMemory');
         }
@@ -45,7 +45,11 @@ var starter = {
 
         if (options.docker) {
             executable = process.env.DOCKER_PATH || 'docker';
-            preArgs = ['run', '-d', '-p', port + ':' + port, process.env.DOCKER_IMAGE || 'amazon/dynamodb-local'];
+            preArgs = ['run', '-p', port + ':' + port];
+            if (options.dbPath) {
+                preArgs.push('--mount', 'type=bind,source=' + options.dbPath + ',target=/home/dynamodblocal/dbpath');
+            }
+            preArgs.push(process.env.DOCKER_IMAGE || 'amazon/dynamodb-local')
         } else {
             executable = 'java';
             preArgs.push('-Djava.library.path=' + db_dir + '/DynamoDBLocal_lib');

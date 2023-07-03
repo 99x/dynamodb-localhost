@@ -1,39 +1,35 @@
 {
-  "name": "dynamodb-localhost",
-  "version": "0.0.9",
-  "engines": {
-    "node": ">=4.0"
-  },
-  "description": "Dynamodb local plugin for devops",
-  "author": "99xtechnology.com",
+  "name": "aws-dynamodb-local",
+  "version": "0.0.10",
+  "description": "Run DynamoDB local for development and testing",
   "license": "MIT",
+  "author": "Adam Jones (domdomegg)",
   "repository": {
     "type": "git",
-    "url": "https://github.com/99xt/dynamodb-localhost"
+    "url": "https://github.com/raisenational/aws-dynamodb-local"
   },
-  "keywords": [
-    "aws",
-    "dynamodb",
-    "dynamo",
-    "testing",
-    "development",
-    "tool",
-    "local",
-    "localhost",
-    "local-dynamodb",
-    "dynamodb-local",
-    "dynamodb-localhost"
-  ],
   "main": "index.js",
   "scripts": {
     "test": "mocha test/*.test.js --reporter spec"
   },
   "dependencies": {
-    "chai": "^4.2.0",
-    "mkdirp": "^1.0.4",
     "mocha": "^10.2.0",
     "progress": "^1.1.8",
     "rimraf": "^2.6.3",
     "tar": "^4.4.19"
-  }
+  },
+  "keywords": [
+    "aws",
+    "dynamodb",
+    "dynamo",
+    "dynamodb-local",
+    "dynamodb-localhost",
+    "local-dynamodb",
+    "aws-dynamodb-local",
+    "testing",
+    "development",
+    "tool",
+    "local",
+    "localhost"
+  ]
 }

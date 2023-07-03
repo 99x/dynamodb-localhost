@@ -1,6 +1,5 @@
 const fs = require("fs");
 const utils = require("../dynamodb/utils");
-const { expect } = require("chai");
 const { install, remove } = require("../index");
 const config = require("../dynamodb/config.json");
 

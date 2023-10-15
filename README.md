@@ -28,11 +28,11 @@ Requires:
 
 Usage example
 
-```js
-const dynamodbLocal = require("aws-dynamodb-local");
+```ts
+import dynamodbLocal from "aws-dynamodb-local"
 
-dynamodbLocal.install();
-dynamodbLocal.start({ port: 8000 });
+await dynamodbLocal.install();
+await dynamodbLocal.start({ port: 8000 });
 ```
 
 Supported methods
@@ -40,9 +40,7 @@ Supported methods
 ```ts
 // Ensure DynamoDB Local is installed.
 // The first time, this will download from AWS and extract files to disk.
-// The optional `callback` function is called after the installation is ready to use.
-// If already installed, this skips the download and fires the callback immediately.
-install(callback)
+install(options)
 
 // Start an instance of DynamoDB Local.
 // DynamoDB will then process incoming requests until you stop it.
@@ -53,25 +51,57 @@ start(options)
 stop(port)
 
 // Uninstall and remove DynamoDB Local.
-// The optional `callback` function is called after it is removed.
-remove(callback)
+remove(options)
 ```
 
 Options for `start`:
 
-```js
-const options = {
-  port: 8000, /* Port to listen on. Default: 8000 */
-  cors: '*', /* Enable CORS support (cross-origin resource sharing) for JavaScript. You must provide a comma-separated "allow" list of specific domains. The default setting for cors is an asterisk (*), which allows public access. */
-  inMemory: true, /* DynamoDB; will run in memory, instead of using a database file. When you stop DynamoDB;, none of the data will be saved. Note that you cannot specify both dbPath and inMemory at once. */
-  dbPath: '<mypath>/', /* The directory where DynamoDB will write its database file. If you do not specify this option, the file will be written to the current directory. Note that you cannot specify both dbPath and inMemory at once. For the path, current working directory is <projectroot>/node_modules/aws-dynamodb-local/dynamodb. For example to create <projectroot>/node_modules/aws-dynamodb-local/dynamodb/<mypath> you should specify '<mypath>/' with a forward slash at the end. */
-  sharedDb: true, /* DynamoDB will use a single database file, instead of using separate files for each credential and region. If you specify sharedDb, all DynamoDB clients will interact with the same set of tables regardless of their region and credential configuration. */
-  delayTransientStatuses: true, /* Causes DynamoDB to introduce delays for certain operations. DynamoDB can perform some tasks almost instantaneously, such as create/update/delete operations on tables and indexes; however, the actual DynamoDB service requires more time for these tasks. Setting this parameter helps DynamoDB simulate the behavior of the Amazon DynamoDB web service more closely. (Currently, this parameter introduces delays only for global secondary indexes that are in either CREATING or DELETING status.) */
-  optimizeDbBeforeStartup: true,  /* Optimizes the underlying database tables before starting up DynamoDB on your computer. You must also specify -dbPath when you use this parameter. */
-  heapInitial: undefined, /* A string which sets the initial heap size e.g., heapInitial: '2048m'. This is input to the java -Xms argument */
-  heapMax: undefined, /* A string which sets the maximum heap size e.g., heapMax: '1g'. This is input to the java -Xmx argument */
-  docker: false, /* Run DynamoDB inside docker container instead of as a local Java program. Default: false */
-  dockerImage: 'amazon/dynamodb-local', /* Specify custom docker image. Default: amazon/dynamodb-local */
+```ts
+interface StartOptions {
+  /** Port to listen on. @default 8000 */
+  port: number,
+
+  /** Enable CORS support (cross-origin resource sharing) for JavaScript. You must provide a comma-separated "allow" list of specific domains. @default "*", which allows public access. */
+  cors: string,
+
+  /** Whether to run in memory, instead of using a database file. When you stop DynamoDB none of the data will be saved. Note that you cannot specify both dbPath and inMemory at once. @default true */
+  inMemory: boolean,
+
+  /** The directory where DynamoDB will write its database file. If you do not specify this option, the file will be written to the current directory. Note that you cannot specify both dbPath and inMemory at once. For the path, current working directory is <projectroot>/node_modules/aws-dynamodb-local/dynamodb. For example to create <projectroot>/node_modules/aws-dynamodb-local/dynamodb/<mypath> you should specify '<mypath>/' with a forward slash at the end. @default undefined */
+  dbPath: string | undefined,
+
+  /** DynamoDB will use a single database file, instead of using separate files for each credential and region. If you specify sharedDb, all DynamoDB clients will interact with the same set of tables regardless of their region and credential configuration. @default true */
+  sharedDb: boolean,
+
+  /** Causes DynamoDB to introduce delays for certain operations. DynamoDB can perform some tasks almost instantaneously, such as create/update/delete operations on tables and indexes; however, the actual DynamoDB service requires more time for these tasks. Setting this parameter helps DynamoDB simulate the behavior of the Amazon DynamoDB web service more closely. (Currently, this parameter introduces delays only for global secondary indexes that are in either CREATING or DELETING status.) @default true */
+  delayTransientStatuses: boolean,
+
+  /** Optimizes the underlying database tables before starting up DynamoDB on your computer. You must also specify -dbPath when you use this parameter. @default true */
+  optimizeDbBeforeStartup: boolean,
+
+  /** Prints a usage summary and options. */
+  help: boolean,
+
+  /** A string which sets the initial heap size e.g. '2G'. This is input to the java -Xms argument. @default undefined */
+  heapInitial: string | undefined,
+
+  /** A string which sets the maximum heap size e.g. '4G'. This is input to the java -Xmx argument. @default undefined */
+  heapMax: string | undefined,
+
+  /** Run DynamoDB inside docker container instead of as a local Java program. @default false */
+  docker: boolean,
+
+  /** If docker enabled, custom docker path to use. @default "docker" */
+  dockerPath: string,
+
+  /** If docker enabled, docker image to run. @default "amazon/dynamodb-local" */
+  dockerImage: string,
+
+  /** Folder where DynamoDB Local is installed to. @default ".dynamodb" */
+  installPath: string,
+
+  /** @deprecated Alias for installPath */
+  install_path: string | undefined,
 }
 ```
 

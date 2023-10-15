@@ -8,15 +8,35 @@
     "type": "git",
     "url": "https://github.com/raisenational/aws-dynamodb-local"
   },
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "test": "mocha test/*.test.js --reporter spec"
+    "test": "vitest run",
+    "test:watch": "vitest --watch",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
+    "clean": "rm -rf dist",
+    "build": "tsc --project tsconfig.build.json",
+    "prepublishOnly": "npm run clean && npm run build"
   },
   "dependencies": {
-    "mocha": "^10.2.0",
-    "progress": "^1.1.8",
-    "rimraf": "^2.6.3",
-    "tar": "^4.4.19"
+    "tar": "^6.2.0"
+  },
+  "devDependencies": {
+    "@aws-sdk/client-dynamodb": "^3.428.0",
+    "@tsconfig/node-lts-strictest": "^18.12.1",
+    "@types/tar": "^6.1.6",
+    "eslint": "^8.51.0",
+    "eslint-config-domdomegg": "^1.2.2",
+    "typescript": "^4.9.5",
+    "vitest": "^0.29.2"
+  },
+  "eslintConfig": {
+    "extends": [
+      "eslint-config-domdomegg"
+    ]
   },
   "keywords": [
     "aws",
